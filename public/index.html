@@ -1,1 +1,32 @@
 
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Netlify 函数演示</title>
+</head>
+<body>
+    <h1>欢迎测试后端 API!</h1>
+    <button onclick="callHelloFunction()">点击调用后端函数</button>
+    <div id="response"></div>
+
+    <script>
+        async function callHelloFunction() {
+            try {
+                // 1. 调用 Netlify Function 的路径（必须以 .netlify/functions 开头）
+                const response = await fetch('/.netlify/functions/hello?name=小明');
+                
+                // 2. 解析返回的 JSON 数据
+                const data = await response.json();
+                
+                // 3. 将结果显示在页面上
+                document.getElementById('response').innerText = data.message;
+            } catch (error) {
+                console.error('调用出错:', error);
+                document.getElementById('response').innerText = '出错了: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
