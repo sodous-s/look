@@ -1,0 +1,11 @@
+# netlify.toml
+[build]
+  # 告诉 Netlify 你的前端文件从哪个目录发布
+  publish = "public"
+  # 如果你的函数目录不是 netlify/functions，在此指定（例如 "my-functions"）
+  # functions = "my-functions"
+
+# [[redirects]] # 如果需要重定向规则可以在这里配置
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
